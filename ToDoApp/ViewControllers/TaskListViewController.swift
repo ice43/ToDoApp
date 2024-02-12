@@ -34,7 +34,6 @@ final class TaskListViewController: UITableViewController {
         completion: ((String) -> Void)? = nil
         
     ) {
-        var test = ""
         let alert = UIAlertController(
             title: title,
             message: message,
@@ -49,14 +48,13 @@ final class TaskListViewController: UITableViewController {
                 return
             }
             completion?(taskName)
-            test = taskName
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
         
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         alert.addTextField { textField in
-            textField.placeholder = test
+            textField.placeholder = "New task"
         }
         
         present(alert, animated: true)
