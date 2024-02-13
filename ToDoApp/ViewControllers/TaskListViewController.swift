@@ -30,7 +30,6 @@ final class TaskListViewController: UITableViewController {
     private func showAlert(
         withTitle title: String,
         andMessage message: String,
-        placeholder: String? = nil,
         completion: ((String) -> Void)? = nil
         
     ) {
