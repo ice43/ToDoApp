@@ -83,7 +83,7 @@ final class TaskListViewController: UITableViewController {
         let fetchRequest = ToDoTask.fetchRequest()
         
         do {
-           taskList = try storageManager.persistentContainer.viewContext.fetch(fetchRequest)
+            taskList = try storageManager.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
         }
