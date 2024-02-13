@@ -20,16 +20,10 @@ final class TaskListViewController: UITableViewController {
         fetchData()
     }
     
-    @objc private func addNewTask() {
-        showAlert(withTitle: "New task", andMessage: "What do you want to do?") {
-            [unowned self] taskName in
-            save(taskName)
-        }
-    }
-    
     private func showAlert(
         withTitle title: String,
         andMessage message: String,
+        textInTF: String? = nil,
         completion: ((String) -> Void)? = nil
         
     ) {
@@ -54,9 +48,17 @@ final class TaskListViewController: UITableViewController {
         alert.addAction(cancelAction)
         alert.addTextField { textField in
             textField.placeholder = "New task"
+            textField.text = textInTF
         }
         
         present(alert, animated: true)
+    }
+    
+    @objc private func addNewTask() {
+        showAlert(withTitle: "New task", andMessage: "What do you want to do?") {
+            [unowned self] taskName in
+            save(taskName)
+        }
     }
     
     private func save(_ taskName: String) {
@@ -84,6 +86,44 @@ final class TaskListViewController: UITableViewController {
            taskList = try storageManager.persistentContainer.viewContext.fetch(fetchRequest)
         } catch {
             print(error)
+        }
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension TaskListViewController {
+    override func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        showAlert(
+            withTitle: "Edit Task",
+            andMessage: "It seems that plans have changed",
+            textInTF: taskList[indexPath.row].title
+        ) {
+            [unowned self] taskName in
+            update(taskName, at: indexPath)
+
+            tableView.reloadData()
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ) {
+        if editingStyle == .delete {
+            storageManager
+                .persistentContainer
+                .viewContext
+                .delete(taskList[indexPath.row])
+            
+            storageManager.saveContext()
+            fetchData()
+            
+            tableView.reloadData()
         }
     }
 }
@@ -138,39 +178,5 @@ private extension TaskListViewController {
             action: #selector(addNewTask)
         )
         navigationController?.navigationBar.tintColor = .white
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension TaskListViewController {
-    override func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath
-    ) {
-        showAlert(withTitle: "Edit Task", andMessage: "It seems that plans have changed") {
-            [unowned self] taskName in
-            update(taskName, at: indexPath)
-
-            tableView.reloadData()
-        }
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func tableView(
-        _ tableView: UITableView,
-        commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath
-    ) {
-        if editingStyle == .delete {
-            storageManager
-                .persistentContainer
-                .viewContext
-                .delete(taskList[indexPath.row])
-            
-            storageManager.saveContext()
-            fetchData()
-            
-            tableView.reloadData()
-        }
     }
 }
