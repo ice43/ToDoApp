@@ -19,40 +19,6 @@ final class TaskListViewController: UITableViewController {
         fetchData()
     }
     
-    private func showAlert(
-        withTitle title: String,
-        andMessage message: String,
-        textInTF: String? = nil,
-        completion: ((String) -> Void)? = nil
-        
-    ) {
-        let alert = UIAlertController(
-            title: title,
-            message: message,
-            preferredStyle: .alert
-        )
-        let saveAction = UIAlertAction(
-            title: "Save Task",
-            style: .default
-        ) { _ in
-            guard let taskName = alert.textFields?.first?.text,
-                  !taskName.isEmpty else {
-                return
-            }
-            completion?(taskName)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-        
-        alert.addAction(saveAction)
-        alert.addAction(cancelAction)
-        alert.addTextField { textField in
-            textField.placeholder = "New task"
-            textField.text = textInTF
-        }
-        
-        present(alert, animated: true)
-    }
-    
     private func addNewTask() {
         showAlert()
     }
