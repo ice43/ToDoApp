@@ -10,7 +10,7 @@ import CoreData
 final class StorageManager {
     static let shared = StorageManager()
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
 
         let container = NSPersistentContainer(name: "ToDoApp")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -20,6 +20,8 @@ final class StorageManager {
         })
         return container
     }()
+    
+    private init() {}
 
     func saveContext() {
         let context = persistentContainer.viewContext
@@ -32,6 +34,4 @@ final class StorageManager {
             }
         }
     }
-    
-    private init() {}
 }

@@ -59,11 +59,11 @@
 			isa = PBXGroup;
 			children = (
 				CD4C07C52B7A0EE800ACD58D /* ViewControllers */,
+				CD8A1DA72B7CB3E800797F80 /* Models */,
 				CD4C07C62B7A0F0000ACD58D /* Services */,
 				CD4C07C32B7A0EB300ACD58D /* Storyboards */,
 				CD4C07C42B7A0EC900ACD58D /* App */,
 				CD4C07C22B7A0E9000ACD58D /* Resources */,
-				CD4C07B42B79EB8C00ACD58D /* ToDoApp.xcdatamodeld */,
 			);
 			path = ToDoApp;
 			sourceTree = "<group>";
@@ -108,6 +108,14 @@
 				CD4C07C72B7A0FD200ACD58D /* StorageManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		CD8A1DA72B7CB3E800797F80 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD4C07B42B79EB8C00ACD58D /* ToDoApp.xcdatamodeld */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
