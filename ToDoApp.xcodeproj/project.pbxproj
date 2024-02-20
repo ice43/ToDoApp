@@ -14,6 +14,7 @@
 		CD4C07B82B79EB8D00ACD58D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD4C07B72B79EB8D00ACD58D /* Assets.xcassets */; };
 		CD4C07BB2B79EB8D00ACD58D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD4C07B92B79EB8D00ACD58D /* LaunchScreen.storyboard */; };
 		CD4C07C82B7A0FD200ACD58D /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4C07C72B7A0FD200ACD58D /* StorageManager.swift */; };
+		CDA7BA2B2B84DA6000ED4166 /* AlertControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA7BA2A2B84DA6000ED4166 /* AlertControllerFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CD4C07BA2B79EB8D00ACD58D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD4C07BC2B79EB8D00ACD58D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD4C07C72B7A0FD200ACD58D /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		CDA7BA2A2B84DA6000ED4166 /* AlertControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControllerFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				CD4C07C52B7A0EE800ACD58D /* ViewControllers */,
+				CDA7BA292B84DA4E00ED4166 /* Factories */,
 				CD8A1DA72B7CB3E800797F80 /* Models */,
 				CD4C07C62B7A0F0000ACD58D /* Services */,
 				CD4C07C32B7A0EB300ACD58D /* Storyboards */,
@@ -116,6 +119,14 @@
 				CD4C07B42B79EB8C00ACD58D /* ToDoApp.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CDA7BA292B84DA4E00ED4166 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				CDA7BA2A2B84DA6000ED4166 /* AlertControllerFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 				CD4C07B02B79EB8C00ACD58D /* TaskListViewController.swift in Sources */,
 				CD4C07AC2B79EB8C00ACD58D /* AppDelegate.swift in Sources */,
 				CD4C07C82B7A0FD200ACD58D /* StorageManager.swift in Sources */,
+				CDA7BA2B2B84DA6000ED4166 /* AlertControllerFactory.swift in Sources */,
 				CD4C07AE2B79EB8C00ACD58D /* SceneDelegate.swift in Sources */,
 				CD4C07B62B79EB8C00ACD58D /* ToDoApp.xcdatamodeld in Sources */,
 			);
